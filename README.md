@@ -7,6 +7,11 @@ This repository contains a full-stack application built with Django (backend), R
 
 ---
 
+######## HERE IS A LINK WITH THE VIDEO WORKING
+
+- [Video DEMO](https://drive.google.com/file/d/1uIlRVd_wELrBO9wky6fQMWOEI3zbBalH/view?usp=sharing)
+
+
 ## Table of Contents
 - [Project Overview](#project-overview)
 - [Services](#services)
