@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./backend-site/data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  backend:
+    build: ./backend-site/
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./backend-site:/code
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend-site
+      dockerfile: Dockerfile
+    image: frontend:latest
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend-site:/app
+    command: ["npm", "start"]
+    environment:
+      - NODE_ENV=development
